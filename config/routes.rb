@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get "customers/unsubscribe/confirm" => "public/customers#confirm"
   get "cart_items" => "public/cart_items#index"
   get "orders/new" => "public/orders#new"
-  get "orders/confirm" => "public/orders#confirm"
+  post "orders/confirm" => "public/orders#confirm"
   get "orders/complete" => "public/orders#complete"
   get "orders/index" => "public/orders#index"
   get "orders/:id" => "public/orders#show"
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'items' => 'admin/items#index'
+    resources :items
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
