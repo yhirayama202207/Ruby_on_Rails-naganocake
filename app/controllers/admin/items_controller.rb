@@ -19,4 +19,11 @@ class Admin::ItemsController < ApplicationController
   def update
   end
 
+  #投稿データのストロングパラメータ
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :introduction, :price, :is_active)
+  end
+
 end
