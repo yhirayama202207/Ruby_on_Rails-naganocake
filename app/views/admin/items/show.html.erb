@@ -1,1 +1,21 @@
 <h2>商品詳細画面 views/admin/items/show</h2>
+
+<h2>商品詳細</h2>
+
+                  <%= image_tag @item.image(100,100) %></br>
+                  <%= @user.name %>
+                <% end %>
+              </td>
+              <td>s
+                <%= link_to book_path(@book.id) do %>
+                  <%= @book.title %>
+                <% end %>
+              </td>
+              <td><%= @book.body %></td>
+                <% if @book.user == current_user %>
+              <td>
+                <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+              </td>
+                <% end %>
+            </tr>
+          </tbody>

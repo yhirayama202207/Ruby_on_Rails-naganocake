@@ -23,11 +23,11 @@ before_action :configure_permitted_parameters , if: :devise_controller?
   protected
 
   def after_sign_in_path_for(resource)
-    admin_order(resource)
+    admin_path
   end
 
   def after_sign_out_path_for
-    new_admin_session
+    new_admin_session_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.
