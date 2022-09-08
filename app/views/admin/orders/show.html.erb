@@ -1,1 +1,70 @@
 <h2>注文詳細画面（ステータス編集を兼ねる） views/admin/orders/show</h2>
+
+<h2>注文履歴詳細</h2>
+<label>購入者</label>
+<%= link_to admin_customer_path(customer.id) do %>
+<%= @customer.last_name %><%= @customer.first_name %>
+<% end %>
+</br>
+<label>注文日</label>
+<%= @order.created_at %></br>
+<label>配送先</label>
+<%= @order.postal_code %><%= @order.address %></br>
+<%= @customer.last_name %><%= @customer.first_name %></br>
+<label>支払い方法</label>
+<%= @order.payment_method_i18n[:payment_method] %></br>
+<label>注文ステータス</label>
+<%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+<%= f.select :status, [[0, "入金待ち"], [1, "入金確認"], [2, "製作中"], [3, "発送準備中"], [4, "発送済み"]] %>
+<%= f.submit "更新", class: "btn btn-success" %>
+<% end %>
+</br>
+
+<table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>製作ステータス</th>
+              <th></th>
+              <th colspan=5></th>
+            </tr>
+          </thread>
+          <tbody>
+              <% @order_details.each do |order_details| %>
+              <tr>
+              <td>
+                <%= @item.name %>
+              </td>
+              <td>
+                <%= @order_details.price %>
+              </td>
+              <td>
+                <%= @order_details.amount %>
+              </td>
+              <td>
+                <%= @order_details.price %>
+              </td>
+              <td>
+                <%= form_with model: @order_details, url: admin_order_path(@order_details.id), method: :patch do |f| %>
+                <%= @order_details.making_status_i18n[:making_status] %>
+                <%= f.select :making_status, [[0, "製作不可"], [1, "製作待ち"], [2, "製作中"], [3, "製作完了"]] %>
+                <%= f.submit "変更を保存", class: "btn btn-success" %>
+              </td>
+
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+
+        <label>商品合計</label>
+        <%= 計算結果を反映 %>円
+
+        <label>送料　800円</label>
+
+        <label>請求金額合計</label>
+        <%= 計算結果を反映 %>円
+
+
