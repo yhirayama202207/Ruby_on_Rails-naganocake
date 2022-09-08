@@ -2,7 +2,6 @@ class Admin::GenresController < ApplicationController
 
   def index
     @genre = Genre.new
-    @genre.id = Genre.find(params[:id])
     @genres = Genre.all
   end
 
