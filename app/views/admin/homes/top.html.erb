@@ -13,21 +13,21 @@
             </tr>
           </thread>
           <tbody>
-              <% @customers.each do |customer| %>
+              <% @orders.each do |order| %>
               <tr>
               <td>
-                <%= customer.id %>
-              </td>
-              <td>
-                <%= link_to admin_customer_path(customer.id) do %>
-                <%= customer.name %>
+                <%= link_to admin_order_path(order.id) do %>
+                <%= order.created_at %>
                 <% end %>
               </td>
               <td>
-                <%= customer.email %>
+                <%= @customer.last_name %><%= @customer.first_name %>
               </td>
               <td>
-                <%= customer.is_deleted %>
+                <%= @order_details.amount %>
+              </td>
+              <td>
+                <%= @order.status_i18n[:status] %>
               </td>
 
               </tr>
@@ -35,4 +35,4 @@
           </tbody>
         </table>
 
-        <%= paginate @customers %>
+        <%= paginate @orders %>
