@@ -1,1 +1,10 @@
 <h2>顧客のマイページ views/public/customers/show.html.erb</h2>
+
+<h2>マイページ</h2>
+
+<h2>登録情報</h2><%= link_to "編集する", customers_edit_path(@customer.id), class: "btn btn-success" %>
+
+テーブルを挿入
+
+配送先<%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></br>
+注文履歴<%= link_to "一覧を見る", orders_index_path(@customer.id), class: "btn btn-primary" %>
