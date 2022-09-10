@@ -19,9 +19,23 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm
+    @customer = Customer.find(params[:id])
   end
 
   def unsubscribe
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      flash[:notice] = "退会が完了しました"
+    else
+      render :confirm
+    end
+  end
+
+  #投稿データのストロングパラメータ
+  private
+
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number,:email, :is_deleted)
   end
 
 end
