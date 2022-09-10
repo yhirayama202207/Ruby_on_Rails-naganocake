@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "items" => "public/items#index"
   get "items/:id" => "public/items#show"
   get "customers" => "public/customers#show"
+  patch "customers" => "public/customers#update"
   get "customers/edit" => "public/customers#edit"
   get "customers/unsubscribe/confirm" => "public/customers#confirm"
   get "cart_items" => "public/cart_items#index"
