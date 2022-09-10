@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get "orders/:id" => "public/orders#show"
   get "addresses" => "public/addresses#index"
   get "addresses/:id/edit" => "public/addresses#edit"
+  post  "addresses" => "public/addresses#create"
+  patch "addresses/:id" => "public/addresses#update"
+  delete "addresses/:id" => "public/addresses#destroy"
 
   # 管理者用
   # URL /admin/sign_in ...
