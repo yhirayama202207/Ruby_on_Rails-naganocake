@@ -1,1 +1,12 @@
 <h2>顧客の退会確認画面 views/public/customers/confirm.html.erb</h2>
+
+<h3>本当に退会しますか？</h3>
+
+<p>退会すると、会員登録情報や</p>
+<p>これまでの購入履歴が閲覧できなくなります。</p>
+<p>退会する場合は、「退会する」をクリックしてください。</p>
+
+<%= link_to "退会しない", customers_path(@customer.id), class: "btn btn-primary" %>
+<%= form_with model: @customer, url: customers_unsubscribe_path, method: :patch do |f| %>
+<%= f.submit "退会する", class: "btn btn-danger" %></br>
+<% end %>
