@@ -21,13 +21,13 @@
                 <% end %>
               </td>
               <td>
-                <%= @customer.last_name %><%= @customer.first_name %>
+                <%= order.customer.last_name %><%= order.customer.first_name %>
               </td>
               <td>
-                <%= @order_details.amount %>
+                <%= order.order_details.amount %>
               </td>
               <td>
-                <%= @order.status_i18n[:status] %>
+                <%= order.status_i18n[:status] %>
               </td>
 
               </tr>

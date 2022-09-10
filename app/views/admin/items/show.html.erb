@@ -1,5 +1,3 @@
-<h2>商品詳細画面 views/admin/items/show</h2>
-
 <h2>商品詳細</h2>
 
 <% if @item.image.attached? %>
@@ -10,7 +8,13 @@
 </br>
 <label>商品名</label><%= @item.name %></br>
 <label>商品説明</label><%= @item.introduction %></br>
-<label>ジャンル</label><%= @genre.name %></br>
+<label>ジャンル</label><%= @item.genre.name %></br>
 <label>税抜価格</label><%= @item.price %></br>
-<label>販売ステータス</label><%= @item.is_active %></br>
+<label>販売ステータス</label>
+<% if @item.is_active %>
+  販売中
+<% else %>
+  販売停止中
+<% end %>
+</br>
 <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>

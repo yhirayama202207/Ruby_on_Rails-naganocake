@@ -1,5 +1,3 @@
-<h2>商品一覧　admin/items/index</h2>
-
     <div class= "col-md-8 offset-md-1">
         <h2>商品一覧</h2>
         <table class="table table-hover table-inverse">
@@ -28,10 +26,14 @@
                 <%= item.price %>
               </td>
               <td>
-                <%= item.genre_id %>
+                <%= item.genre.name %>
               </td>
               <td>
-                <%= item.is_active %>
+                <% if item.is_active %>
+                  販売中
+                <% else %>
+                  販売停止中
+                <% end %>
               </td>
 
               </tr>
