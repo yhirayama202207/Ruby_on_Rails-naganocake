@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "customers/edit" => "public/customers#edit"
   get "customers/unsubscribe/confirm" => "public/customers#confirm"
   get "cart_items" => "public/cart_items#index"
+  patch "cart_items/:id" => "public/cart_items#update"
   get "orders/new" => "public/orders#new"
   post "orders/confirm" => "public/orders#confirm"
   get "orders/complete" => "public/orders#complete"

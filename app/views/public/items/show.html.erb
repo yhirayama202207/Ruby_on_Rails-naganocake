@@ -1,1 +1,32 @@
 <h2>商品詳細画面 views/public/items/show.html.erb</h2>
+
+<div class= "col-md-8 offset-md-1">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>ジャンル検索</th>
+              <th colspan="1"></th>
+            </tr>
+          </thread>
+          <tbody>
+              <% @genres.each do |genre| %>
+              <tr>
+              <td><%= link_to genre.name, edit_admin_genre_path(genre.id) %></td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+
+<% if @item.image.attached? %>
+  <%= image_tag @item.image, size: "200x200" %>
+<% else %>
+  <%= image_tag 'no_image.png', size: "200x200" %>
+<% end %>
+</br>
+<label>商品名</label><%= @item.name %></br>
+<label>商品説明</label><%= @item.introduction %></br>
+<label>ジャンル</label><%= @item.genre.name %></br>
+<label>税抜価格</label><%= @item.price %>円←税込価格にする</br>
+<%= f.select :amount, *[1..10] %>
+</br>
+<%= link_to "カートに入れる", cart_items_path(@item.id), class: "btn btn-success" %>
