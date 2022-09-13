@@ -1,1 +1,41 @@
-<h2>カート内商品一覧画面(数量変更・カート削除の要素を含む) views/public/cart_items_index.html.erb</h2>
+<h2>ショッピングカート</h2>
+<%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_items), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に空にしますか？" %>
+
+ <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+              <th colspan="5"></th>
+            </tr>
+          </thread>
+          <tbody>
+              <% @cart_items.each do |cart_item| %>
+              <tr>
+              <td>
+                <%= image_tag cart_item.item.image, size: '100x100' %>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.item.with_tax_price %>
+              </td>
+              <td>
+                <%= form_with model: cart_item, url: cart_items_path, method: :patch do |f| %>
+                <%= f.select :amount, *[1..10], include_blank: cart_item.amount %>
+                <%= link_to "変更", cart_items_path(cart_item.id), class: "btn btn-success" %>
+                <% end %>
+              </td>
+              <td>
+                <%= cart_item.subtotal %>
+              </td>
+              <td>
+                <%= link_to "削除する", cart_items_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
+              </td>
+              <% @total += cart_item.subtotal %>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>

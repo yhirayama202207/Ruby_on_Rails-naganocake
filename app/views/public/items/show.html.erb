@@ -17,8 +17,7 @@
     </tbody>
   </table>
 
-<%= form_with model: @item, url: cart_items_path, method: :post do |f| %>
-<%= f.hidden_field :name, :value => @item.name %>
+<%#= form_with model: @item, url: cart_items_path, method: :post do |f| %>
 <% if @item.image.attached? %>
   <%= image_tag @item.image, size: "200x200" %>
 <% else %>
@@ -28,7 +27,9 @@
 <h4><%= @item.name %></h4>
 <%= @item.introduction %></br>
 <label>￥</label><%= @item.with_tax_price %>（税込）</br>
+<%= form_with model: @cart_item, method: :post do |f| %>
+<%= f.hidden_field :item_id, :value => @item.id %>
 <%= f.select :amount, *[1..10], include_blank: "個数を選択" %>
 </br>
-<%= link_to "カートに入れる", cart_items_path(@item.id), class: "btn btn-success" %>
+<%= f.submit "カートに入れる", class: "btn btn-success" %>
 <% end %>
