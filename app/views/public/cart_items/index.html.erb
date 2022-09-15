@@ -16,7 +16,7 @@
               <% @cart_items.each do |cart_item| %>
               <tr>
               <td>
-                <%= image_tag cart_item.item.image, size: '100x100' %>
+                <%= image_tag cart_item.item.image, size: "100x100" %>
                 <%= cart_item.item.name %>
               </td>
               <td>
@@ -32,7 +32,7 @@
                 <%= cart_item.subtotal %>
               </td>
               <td>
-                <%= link_to "削除する", cart_items_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "削除する", cart_items_destroy_path(@cart_item.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
               </td>
               <% @total += cart_item.subtotal %>
               </tr>

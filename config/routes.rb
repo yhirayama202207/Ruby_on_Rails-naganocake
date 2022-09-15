@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   get "cart_items" => "public/cart_items#index"
   post "cart_items" => "public/cart_items#create"
   patch "cart_items/:id" => "public/cart_items#update"
-  delete "cart_items/:id" => "public/cart_items#destroy"
-  delete "cart_items/destroy_all" => "public/cart_items#destroy_all"
+  delete "cart_items/:id" => "public/cart_items#destroy", as: 'cart_items_destroy'
+  delete "cart_items/destroy_all" => "public/cart_items#destroy_all", as: 'cart_items_destroy_all'
   get "orders/new" => "public/orders#new"
   post "orders/confirm" => "public/orders#confirm"
   get "orders/complete" => "public/orders#complete"

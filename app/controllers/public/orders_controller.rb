@@ -1,7 +1,7 @@
 class Public::OrdersController < ApplicationController
 
   def new
-    @order = Order.new(order_params)
+    @order = Order.new
   end
 
   def confirm
