@@ -7,4 +7,13 @@ class Item < ApplicationRecord
   def with_tax_price
     (price * 1.1).floor
   end
+  
+  def self.search(search)
+    if search
+      Item.where(['content LIKE ?', "%#{search}%"])
+    else
+      Item.all
+    end
+  end
+  
 end

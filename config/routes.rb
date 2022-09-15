@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
   }
 
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
+
   get "/" => "public/homes#top"
   get "about" => "public/homes#about"
   get "items" => "public/items#index"

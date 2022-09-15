@@ -32,7 +32,7 @@
                 <%= cart_item.subtotal %>
               </td>
               <td>
-                <%= link_to "削除する", cart_items_destroy_path(@cart_item.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+                <%= link_to "削除する", @cart_item, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
               </td>
               <% @total += cart_item.subtotal %>
               </tr>

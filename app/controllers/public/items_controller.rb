@@ -11,4 +11,9 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
   end
 
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @items = Item.search(params[:search])
+  end
+
 end
