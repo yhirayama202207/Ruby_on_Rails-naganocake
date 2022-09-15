@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/" => "public/homes#top"
   get "about" => "public/homes#about"
   get "items" => "public/items#index"
+  get "items/genres/:id" => "public/items#genre_index", as: "items_genre_index"
   get "items/:id" => "public/items#show"
   get "customers" => "public/customers#show"
   patch "customers/unsubscribe" => "public/customers#unsubscribe"
