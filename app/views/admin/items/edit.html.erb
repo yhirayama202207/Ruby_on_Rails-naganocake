@@ -1,7 +1,7 @@
-<h2>商品編集画面 views/admin/items/edit</h2>
+<h5>商品編集</h5>
+</br>
 
-<h2>商品編集</h2>
-
+<div style="text-align:center;">
 <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
   <label>商品画像</label>
   <%= f.file_field :image, accept: "image/*" %></br>
@@ -14,6 +14,7 @@
     <%= f.radio_button :is_active, :true %>
     <%= f.label :is_active, "販売中", {value: :true, checked: true, style: "display: inline-block;"} %>
     <%= f.radio_button :is_active, :false %>
-    <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+    <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %></br>
     <%= f.submit "変更を保存", class: "btn btn-success" %>
 <% end %>
+</div>
