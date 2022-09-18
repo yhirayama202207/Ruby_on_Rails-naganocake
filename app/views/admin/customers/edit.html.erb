@@ -1,4 +1,6 @@
-<h2>顧客編集画面 views/admin/customers/edit</h2>
+<h5>
+  <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
+</h5>
 
 <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
             <label>会員ID</label><%= @customer.id %></br>
@@ -9,18 +11,19 @@
             <%= f.text_field :last_name_kana, autofocus: true, id:"inputlast_name_kana", placeholder:"" %>
             <%= f.text_field :first_name_kana, autofocus: true, id:"inputfirst_name_kana", placeholder:"" %></br>
             <label>郵便番号</label>
-            <%= f.text_field :postal_code, autofocus: true, id:"inputpostal_code", placeholder:"" %>
+            <%= f.text_field :postal_code, autofocus: true, id:"inputpostal_code", placeholder:"" %></br>
             <label>住所</label>
-            <%= f.text_field :address, autofocus: true, id:"inputaddress", placeholder:"" %>
+            <%= f.text_field :address, autofocus: true, id:"inputaddress", placeholder:"" %></br>
             <label>電話番号</label>
-            <%= f.text_field :telephone_number, autofocus: true, id:"inputtelephone_number", placeholder:"" %>
+            <%= f.text_field :telephone_number, autofocus: true, id:"inputtelephone_number", placeholder:"" %></br>
             <label>メールアドレス</label>
-            <%= f.text_field :email, autofocus: true, id:"inputemail", placeholder:"" %>
+            <%= f.text_field :email, autofocus: true, id:"inputemail", placeholder:"" %></br>
             <label>会員ステータス</label>
-            <%= form_with(model: @customer, local: true) do |form| %>
+            <%= form_with(model: Customer, local: true) do |form| %>
             <%= form.radio_button :is_deleted, :false %>
-            <%= form.label :is_deleted, "有効", {value: :false, checked: true, style: "display: inline-block;"} %>
+            <%= form.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
             <%= form.radio_button :is_deleted, :true %>
-            <%= form.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+            <%= form.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %></br>
             <%= f.submit "変更を保存", class: "btn btn-success" %>
+          <% end %>
           <% end %>
