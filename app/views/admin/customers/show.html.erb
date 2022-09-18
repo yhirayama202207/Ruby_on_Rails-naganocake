@@ -13,7 +13,8 @@
 <% if @customer.is_deleted %>
   <label class="text-secondary">退会</label>
 <% else %>
-  <label class="text-secondary">有効</label>
-<% end %></br>
-<%= link_to "編集する", edit_admin_item_path(@customer.id), class: "btn btn-success" %>
+  <label class="text-success">有効</label>
+<% end %>
+</br>
+<%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %>
 <%= link_to "注文履歴一覧を見る", orders_index_path(@customer.id), class: "btn btn-primary" %>
