@@ -1,5 +1,6 @@
 <h5>商品一覧</h5>
 
+<div style="text-align:center;">
 <%= link_to new_admin_item_path, class: 'nav-link text-light' do %>
   <label class="btn btn-circle">
     <div class="shadow p-3 mb-3">＋</div>
@@ -47,5 +48,5 @@
               <% end %>
           </tbody>
         </table>
-
+</div>
         <%= paginate @items %>
