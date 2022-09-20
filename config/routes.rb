@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "items" => "public/items#index"
   get "items/genres/:id" => "public/items#genre_index", as: "items_genre_index"
   get "items/:id" => "public/items#show"
-  get "customers" => "public/customers#show"
+  get "customers/:id" => "public/customers#show", as: "customers_show"
   patch "customers/unsubscribe" => "public/customers#unsubscribe"
   get "customers/edit" => "public/customers#edit"
   get "customers/unsubscribe/confirm" => "public/customers#confirm"
