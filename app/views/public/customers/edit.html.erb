@@ -1,6 +1,4 @@
-<h2>顧客の登録情報編集画面 views/public/customers/edit.html.erb</h2>
-
-<h2>会員情報編集</h2>
+<h5>会員情報編集</h5>
 <%= form_with model: @customer, url: customers_path(@customer.id), method: :patch do |f| %>
             <label>氏名</label>
             <%= f.text_field :last_name, autofocus: true, id:"inputlast_name", placeholder:"" %>
