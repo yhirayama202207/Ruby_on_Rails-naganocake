@@ -24,6 +24,7 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       render :edit
+    end
   end
 
   def destroy
