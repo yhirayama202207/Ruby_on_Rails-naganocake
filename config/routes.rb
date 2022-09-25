@@ -6,20 +6,22 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
   }
 
-  resources :items do
-    collection do
-      get 'search'
-    end
-  end
+  # resources :items do
+  #   collection do
+  #     get 'search'
+  #   end
+  # end
 
   get "/" => "public/homes#top"
   get "about" => "public/homes#about"
-  get "items" => "public/items#index"
+  get "items" => "public/items#index", as: "items"
   get "items/genres/:id" => "public/items#genre_index", as: "items_genre_index"
   get "items/:id" => "public/items#show"
-  get "customers/:id" => "public/customers#show", as: "customers_show"
+  get "customers" => "public/customers#show", as: "customer_show"
   patch "customers/unsubscribe" => "public/customers#unsubscribe"
-  get "customers/edit" => "public/customers#edit"
+  #get "customers/edit" => "public/customers#edit"
+  get "customers/information/edit" => "public/customers#edit", as: "customer_edit"
+  patch "customers/information" => "public/customers#update", as: "customer_update"
   get "customers/unsubscribe/confirm" => "public/customers#confirm"
   get "cart_items" => "public/cart_items#index"
   post "cart_items" => "public/cart_items#create"

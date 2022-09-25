@@ -1,7 +1,7 @@
-<h2>商品一覧（全<%= @items.count %>件）</h2>
+<h5>商品一覧（全<%= @items.count %>件）</h5>
 
-<div class= "col-md-8 offset-md-1">
-  <table class="table table-hover table-inverse">
+<div class= "col-md-2 offset-md-0">
+  <table class="table table-hover table-bordered table-inverse">
     <thead>
       <tr>
         <th>ジャンル検索</th>
@@ -16,6 +16,7 @@
         <% end %>
     </tbody>
   </table>
+</div>
 
 <%= @items.each do |item| %>
 
