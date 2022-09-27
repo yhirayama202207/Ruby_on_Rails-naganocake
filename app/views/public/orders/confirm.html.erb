@@ -1,1 +1,76 @@
-<h2>注文情報確認画面 views/public/orders/confirm.html.erb</h2>
+<h5>注文情報確認</h5>
+
+<%= form_with model: @order, url: orders_path(@order.id), method: :post do |f| %>
+
+<table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+              <th colspan="5"></th>
+            </tr>
+          </thread>
+          <tbody>
+              <% @cart_items.each do |cart_item| %>
+              <tr>
+              <td>
+                <%= image_tag cart_item.item.image, size: "100x100" %>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.item.with_tax_price %>
+              </td>
+              <td>
+                <%= cart_item.amount %>
+              </td>
+              <td>
+                <%= cart_item.subtotal %>
+              </td>
+              <% @total += cart_item.subtotal %>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+
+        <table>
+          <tbody>
+            <tr>
+              <th class="table-secondary">送料</th>
+            <td>
+              <%= @order.shipping_cost %>
+            </td>
+            </tr>
+            <tr>
+              <th class="table-secondary">商品合計</th>
+            <td>
+              <%= @total %>
+            </td>
+            </tr>
+            <tr>
+              <th class="table-secondary">請求金額</th>
+            <td>
+              <%= @total + @order.shipping_cost %>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <label>支払い方法</label>&emsp;&emsp;&emsp;&emsp;
+          <% if @order.payment_method %>
+            <label>クレジットカード</label>
+          <% else %>
+            <label>銀行振込</label>
+          <% end %>
+
+</br>
+
+        <label>お届け先</label>&emsp;&emsp;&emsp;&emsp;
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+
+<%= f.submit "注文を確定する", class: "btn btn-success" %>
+<% end %>
