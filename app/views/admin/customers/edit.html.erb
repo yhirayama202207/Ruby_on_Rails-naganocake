@@ -19,11 +19,9 @@
             <label>メールアドレス</label>
             <%= f.text_field :email, autofocus: true, id:"inputemail", placeholder:"" %></br>
             <label>会員ステータス</label>
-            <%= form_with(model: Customer, local: true) do |form| %>
-            <%= form.radio_button :is_deleted, :false %>
-            <%= form.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-            <%= form.radio_button :is_deleted, :true %>
-            <%= form.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %></br>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %></br>
             <%= f.submit "変更を保存", class: "btn btn-success" %>
-          <% end %>
           <% end %>

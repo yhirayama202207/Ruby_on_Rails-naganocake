@@ -1,6 +1,6 @@
 <h5>配送先編集</h5>
 
-<%= form_with model: @address, url: addresses_path(@address.id), method: :patch do |f| %>
+<%= form_with model: @address, url: address_path, method: :patch do |f| %>
   <%= f.label :"郵便番号(ハイフンなし)" %>
   <%= f.text_field :postal_code, autofocus: true, id:"inputpostal_code", placeholder:""%></br>
   <%= f.label :"住所" %>

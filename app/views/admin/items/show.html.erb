@@ -6,15 +6,16 @@
   <%= image_tag 'no_image.png', size: "200x200" %>
 <% end %>
 </br>
-<label>商品名</label><%= @item.name %></br>
-<label>商品説明</label><%= @item.introduction %></br>
-<label>ジャンル</label><%= @item.genre.name %></br>
-<label>税抜価格</label><%= @item.price %>円</br>
-<label>販売ステータス</label>
+<label>商品名</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= @item.name %></br>
+<label>商品説明</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= @item.introduction %></br>
+<label>ジャンル</label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= @item.genre.name %></br>
+<label>税込価格（税抜価格）</label>&emsp;<%= @item.with_tax_price %>（<%= @item.price %>）円</br>
+<label>販売ステータス</label>&emsp;&emsp;&emsp;&emsp;
 <% if @item.is_active %>
   <label class="text-success">販売中</label>
 <% else %>
   <label class="text-secondary">販売停止中</label>
 <% end %>
 </br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>

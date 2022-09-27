@@ -2,7 +2,7 @@
 
 <label>支払方法</label>
 
-<%= form_with model: @order, url: orders_new_path, method: :post do |f| %>
+<%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
 <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
 </br>
@@ -11,17 +11,17 @@
 </br>
 
 <label>お届け先</label></br>
-<%= f.radio_button current_customer, :address, checked: true %>
+<%= f.radio_button :addresses, 0 %>
 <%= f.label "ご自身の住所" %></br>
 〒<%= current_customer.postal_code %><%= current_customer.address %></br>
 <%= current_customer.last_name + current_customer.first_name %></br>
 
-<%= f.radio_button :addresses, :id %>
+<%= f.radio_button :addresses, 1 %>
 <%= f.label "登録済住所から選択" %></br>
 <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
 </br>
 
-<%= f.radio_button :addresses, :id %>
+<%= f.radio_button :addresses, 2 %>
 <%= f.label "新しいお届け先" %></br>
 郵便番号（ハイフンなし）<%= f.text_field :postal_code %></br>
 住所<%= f.text_field :address %></br>

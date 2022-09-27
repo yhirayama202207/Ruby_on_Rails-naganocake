@@ -7,11 +7,13 @@ class Public::AddressesController < ApplicationController
 
   def edit
     @address = Address.find(params[:id])
+    #@address.customer_id = current_customer.id
   end
 
   def create
     @address = Address.new(address_params)
-    if @address.save
+    @address.customer_id = current_customer.id
+    if @address.save!
       flash[:notice] = "配送先の登録が完了しました"
       redirect_to addresses_path
     end
