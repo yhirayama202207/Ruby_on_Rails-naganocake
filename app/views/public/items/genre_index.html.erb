@@ -1,11 +1,9 @@
-<h2>ジャンル別商品一覧</h2>
-
-<div class= "col-md-8 offset-md-1">
-  <table class="table table-hover table-inverse">
+<div class= "row">
+<div class= "col-3">
+  <table class="table table-hover table-bordered table-inverse">
     <thead>
       <tr>
         <th>ジャンル検索</th>
-        <th colspan="1"></th>
       </tr>
     </thread>
     <tbody>
@@ -16,17 +14,28 @@
         <% end %>
     </tbody>
   </table>
+</div>
 
-<%= @items.each do |item| %>
+<div class= "col-8">
+<h5><%= @genre.name %>一覧（全<%= @genre.items.count %>件）</h5>
 
+<div class= "row">
+<% @items.each do |item| %>
+<div class= "col-3">
+
+<%= link_to items_show_path(item.id) do %>
 <% if item.image.attached? %>
   <%= image_tag item.image, size: "200x200" %>
 <% else %>
   <%= image_tag 'no_image.png', size: "200x200" %>
 <% end %>
-</br>
+<% end %>
 <%= item.name %>
 </br>
 <%= item.price %>円
+</div>
 <% end %>
-</br>
+</div>
+</div>
+</div>
+</div>

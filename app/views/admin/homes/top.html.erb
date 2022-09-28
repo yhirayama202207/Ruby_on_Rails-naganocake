@@ -23,10 +23,14 @@
                 <%= order.customer.last_name %><%= order.customer.first_name %>
               </td>
               <td>
-                <%= order.order_details.amount %>
+                <% @sum = 0 %>
+                <% order.order_details.each do |detail|%>
+                <% @sum += detail.amount %>
+                <% end %>
+                <%= @sum %>
               </td>
               <td>
-                <%= order.status_i18n[:status] %>
+                <%= order.status_i18n %>
               </td>
 
               </tr>

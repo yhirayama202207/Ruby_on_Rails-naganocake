@@ -22,6 +22,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     post "orders/confirm" => "orders#confirm"
     get "orders/complete" => "orders#complete"
+    # get "orders" => "orders#index"
+    # get "orders/:id" => "orders#show"
     resources :addresses
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :create, :index, :show]
@@ -31,7 +33,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   get "about" => "public/homes#about"
   get "items" => "public/items#index", as: "items"
   get "items/genres/:id" => "public/items#genre_index", as: "items_genre_index"
-  get "items/:id" => "public/items#show"
+  get "items/:id" => "public/items#show", as: "items_show"
   get "customers" => "public/customers#show", as: "customer_show"
   patch "customers/unsubscribe" => "public/customers#unsubscribe"
   #get "customers/edit" => "public/customers#edit"

@@ -25,8 +25,8 @@
 
 <h2>新着商品</h2>
 
-<% @items.first(4).each do |item| %>
-<%= link_to items_path(item.id) do %>
+<% @items.last(4).each do |item| %>
+<%= link_to items_show_path(item.id) do %>
 <%= image_tag item.image, size: '100x100' %>
 <% end %>
 <%= item.name %>

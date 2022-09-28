@@ -25,8 +25,9 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
     @customer = current_customer
-    if @customer.update(customer_params)
-      flash[:notice] = "退会が完了しました"
+    if @customer.update(is_deleted: true)
+      #flash[:notice] = "退会が完了しました"
+      redirect_to homes_top_path
     else
       render :confirm
     end
