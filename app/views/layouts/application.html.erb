@@ -22,6 +22,14 @@
         <ul class="navbar-nav ml-auto">
     <% if customer_signed_in? %>
       <li>
+      <label class="text-white">
+      ようこそ、<%= current_customer.last_name %>さん！
+      </label>
+      </li>
+      <li>
+        &emsp;&emsp;
+      </li>
+      <li>
         <%= link_to customer_show_path(current_customer.id), class: 'nav-link text-light' do %>
         マイページ
         <% end %>

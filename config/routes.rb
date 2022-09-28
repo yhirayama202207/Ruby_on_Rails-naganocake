@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions',
+    sessions: 'public/sessions'
   }
 
 # 管理者用
@@ -60,6 +60,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     get "/" => "homes#top"
+    get "/orders/customer/:id" => "orders#index", as: "orders_customer_index"
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

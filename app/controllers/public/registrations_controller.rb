@@ -4,6 +4,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def after_registration_path_for(resource)
+    customer_show_path(current_customer.id)
+  end
+
   #GET /resource/sign_up
   #def new
   #  super

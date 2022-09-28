@@ -15,6 +15,11 @@ class Admin::OrdersController < ApplicationController
     @total = 0
   end
 
+  def index
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders.page(params[:page])
+  end
+
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)

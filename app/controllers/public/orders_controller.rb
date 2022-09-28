@@ -2,6 +2,21 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+
+    #ここは要確認
+    # @cart_items = current_customer.cart_items
+
+    # if @cart_items.amount > 0
+    # redirect_to new_order_path
+    # else
+    # redirect_to cart_items_path
+    # end
+
+  #   if @cart_items.item.empty? then
+  #     redirect_to cart_items_path
+  #   else
+  #     redirect_to new_order_path
+  #   end
   end
 
   def confirm
