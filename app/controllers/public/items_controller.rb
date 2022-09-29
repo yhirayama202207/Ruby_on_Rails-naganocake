@@ -8,6 +8,7 @@ class Public::ItemsController < ApplicationController
   def genre_index
     @genres = Genre.all
     @genre = Genre.find(params[:id])
+    @genre_items = @genre.items.where(is_active: true)
     @items = @genre.items.where(is_active: true)
     #@items = Item.where(genre_id: params[:id])
 

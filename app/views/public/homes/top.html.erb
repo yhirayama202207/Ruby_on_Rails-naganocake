@@ -1,9 +1,9 @@
-<div class= "col-md-8 offset-md-1">
-  <table class="table table-hover table-inverse">
+<div class= "row">
+<div class= "col-4 mt-3">
+  <table class="table table-hover table-bordered table-inverse">
     <thead>
       <tr>
         <th>ジャンル検索</th>
-        <th colspan="1"></th>
       </tr>
     </thread>
     <tbody>
@@ -14,7 +14,10 @@
         <% end %>
     </tbody>
   </table>
+</div>
 
+<div class= "row">
+<div class= "col-8 mt-3">
 <div class="container">
   <%= image_tag 'naganocake.jpg' %>
   <p>ようこそ、ながのCAKEへ！</p>
@@ -22,8 +25,12 @@
   <p>会員でない方も商品の閲覧はできますが、</p>
   <p>購入には会員登録が必要になります。</p>
 </div>
+</div>
+</div>
+</div>
 
-<h2>新着商品</h2>
+
+<h3>新着商品</h3>
 
 <% @items.last(4).each do |item| %>
 <%= link_to items_show_path(item.id) do %>
