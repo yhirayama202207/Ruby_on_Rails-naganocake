@@ -17,7 +17,7 @@
       <%= f.radio_button :is_active, :true %>
       <%= f.label :is_active, "販売中", {value: :true, checked: true, style: "display: inline-block;"} %>
       <%= f.radio_button :is_active, :false %>
-      <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %></br>
+      <%= f.label :is_active, "売切れ", {value: :false, style: "display: inline-block;"} %></br>
     <%= f.submit "新規登録", class: "btn btn-success" %></br>
   <% end %>
   </div>
