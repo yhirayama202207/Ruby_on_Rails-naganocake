@@ -21,19 +21,20 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
-    # if params[:order][:addresses] == "0"
-    #   @order.postal_code = current_customer.postal_code
-    #   @order.address = current_customer.address
-    #   @order.name = current_customer.last_name + current_customer.first_name
-    # elsif params[:order][:addresses] == "1"
-
-    # elsif params[:order][:addresses] == "2"
-
-    # end
+    if params[:order][:addresses] == "0"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:addresses] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:addresses] == "2"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+    end
     @cart_items = current_customer.cart_items
     @order.shipping_cost = 800
     @total = 0
