@@ -20,10 +20,10 @@ before_action :configure_permitted_parameters , if: :devise_controller?
   #   super
   # end
 
-  def destroy
-    reset_session
-    redirect_to new_admin_session_path
-  end
+  # def destroy
+  #   reset_session
+  #   redirect_to new_admin_session_path
+  # end
 
   protected
 

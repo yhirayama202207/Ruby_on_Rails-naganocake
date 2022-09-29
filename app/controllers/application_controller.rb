@@ -25,27 +25,27 @@ class ApplicationController < ActionController::Base
 # end
 # end
 
-private
-def after_sign_in_path_for(resource_or_scope)
-    if resource_or_scope.is_a?(Admin)
-        admin_path
-    else
-        homes_top_path
-    end
-end
+#private
+# def after_sign_in_path_for(resource_or_scope)
+#     if resource_or_scope.is_a?(Admin)
+#         admin_path
+#     else
+#         homes_top_path
+#     end
+# end
 
-def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope.is_a?(Admin)
-        new_admin_session_path
-    else
-        homes_top_path
-    end
-    if resource_or_scope == :admin
-        new_admin_session_path
-    elsif resource_or_scope == :customer
-        homes_top_path
-    else
-        homes_top_path
-    end
-end
+# def after_sign_out_path_for(resource_or_scope)
+#     if resource_or_scope.is_a?(Admin)
+#         new_admin_session_path
+#     else
+#         homes_top_path
+#     end
+#     if resource_or_scope == :admin
+#         new_admin_session_path
+#     elsif resource_or_scope == :customer
+#         homes_top_path
+#     else
+#         homes_top_path
+#     end
+# end
 end
